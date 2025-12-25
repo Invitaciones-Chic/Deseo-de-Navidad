@@ -7,27 +7,18 @@
 
     <meta property="og:image" content="https://raw.githubusercontent.com/Invitaciones-Chic/Digital-Glam/main/Mu%C3%B1eco%20de%20nieve%20magic%20Desing%20efecto.png">
     <meta property="og:image:secure_url" content="https://raw.githubusercontent.com/Invitaciones-Chic/Digital-Glam/main/Mu%C3%B1eco%20de%20nieve%20magic%20Desing%20efecto.png">
-    
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="800">
     <meta property="og:image:height" content="800">
-    <meta property="og:image:alt" content="Muñeco de Nieve Magic Design">
-
     <meta property="og:title" content="🎄 ¡Feliz Navidad! - Magic Design">
     <meta property="og:description" content="✨ Tenemos un deseo mágico para ti. Toca aquí para abrir tu tarjeta...">
     <meta property="og:url" content="https://invitaciones-chic.github.io/Deseo-de-Navidad/">
     <meta property="og:type" content="website">
-    <meta property="og:locale" content="es_ES">
-
-    <meta itemprop="name" content="Feliz Navidad - Magic Design">
-    <meta itemprop="description" content="✨ Tenemos un deseo mágico para ti. Toca aquí para abrir tu tarjeta...">
-    <meta itemprop="image" content="https://raw.githubusercontent.com/Invitaciones-Chic/Digital-Glam/main/Mu%C3%B1eco%20de%20nieve%20magic%20Desing%20efecto.png">
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
     
     <style>
-        /* ... (MANTÉN TU CSS IGUAL QUE ANTES, NO CAMBIES NADA ABAJO DE AQUÍ) ... */
-        /* --- 1. RESET Y BASE --- */
+        /* --- 1. FONDO NEGRO NEVADO Y PROFUNDO --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
@@ -36,48 +27,143 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: radial-gradient(circle at 50% 30%, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            /* Degradado Negro a Azul Noche muy oscuro */
+            background: radial-gradient(circle at 50% 100%, #1a1f35 0%, #000000 100%);
             font-family: 'Montserrat', sans-serif;
             overflow: hidden;
             color: white;
+            perspective: 1000px; /* Activa el 3D real */
         }
-        /* ... resto del código css ... */
-        .particles {
+
+        /* --- 2. NIEVE REALISTA 3D (PARALLAX) --- */
+        .snow-container {
             position: absolute;
             width: 100%;
             height: 100%;
+            overflow: hidden;
             z-index: 0;
-            background-image: 
-                radial-gradient(2px 2px at 20% 30%, rgba(255, 255, 255, 0.8), transparent),
-                radial-gradient(2px 2px at 50% 80%, rgba(255, 255, 255, 0.6), transparent),
-                radial-gradient(2px 2px at 80% 40%, rgba(255, 255, 255, 0.7), transparent);
-            background-size: 600px 600px;
-            animation: floatSpace 20s linear infinite;
+            pointer-events: none;
         }
-        @keyframes floatSpace { from { background-position: 0 0; } to { background-position: 0 600px; } }
 
+        .snow {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(2px 2px at 20px 30px, #fff, rgba(0,0,0,0)),
+                              radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+                              radial-gradient(2px 2px at 50px 160px, #fff, rgba(0,0,0,0)),
+                              radial-gradient(2px 2px at 90px 40px, #fff, rgba(0,0,0,0));
+            background-size: 200px 200px;
+            animation: snowFall linear infinite;
+        }
+
+        /* Capa 1: Fondo (Lenta y pequeña) */
+        .snow.layer1 {
+            opacity: 0.5;
+            background-size: 400px 400px;
+            animation-duration: 15s;
+            filter: blur(1px);
+        }
+        /* Capa 2: Medio (Velocidad normal) */
+        .snow.layer2 {
+            opacity: 0.8;
+            background-size: 300px 300px;
+            animation-duration: 10s;
+        }
+        /* Capa 3: Frente (Rápida y grande - Efecto 3D fuerte) */
+        .snow.layer3 {
+            opacity: 1;
+            background-image: radial-gradient(3px 3px at 100px 50px, #fff, rgba(0,0,0,0)),
+                              radial-gradient(4px 4px at 200px 150px, #fff, rgba(0,0,0,0));
+            background-size: 500px 500px;
+            animation-duration: 6s;
+            filter: blur(0.5px); /* Desenfoque de movimiento sutil */
+        }
+
+        @keyframes snowFall {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(100%); }
+        }
+
+        /* --- 3. TARJETA DECORADA NAVIDEÑA --- */
         .glass-card {
             position: relative;
             z-index: 10;
             width: 90%;
             max-width: 380px;
-            max-height: 85dvh; 
-            height: auto;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-top: 1px solid rgba(255, 255, 255, 0.4);
+            max-height: 85dvh;
+            
+            /* Efecto Cristal más intenso */
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 30px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            
+            /* Sombra realista 3D */
+            box-shadow: 0 40px 70px rgba(0,0,0,0.8), inset 0 0 20px rgba(255,255,255,0.1);
+            
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 25px 20px;
             text-align: center;
+            
+            /* Decoración: Nieve acumulada arriba */
+            border-top: 6px solid rgba(255,255,255,0.6);
         }
 
+        /* ADORNOS COLGANTES (Hechos con CSS) */
+        .ornaments {
+            position: absolute;
+            top: -10px;
+            width: 100%;
+            height: 100px;
+            pointer-events: none;
+            z-index: 20;
+        }
+        .ball {
+            position: absolute;
+            top: 0;
+            width: 2px; /* El hilo */
+            height: 40px;
+            background: rgba(255,255,255,0.5);
+        }
+        .ball::after { /* La esfera */
+            content: '';
+            position: absolute;
+            bottom: -25px;
+            left: -12px;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+        }
+        /* Bola Roja Izquierda */
+        .ball.left {
+            left: 20%;
+            height: 60px; /* Más larga */
+            animation: swing 3s infinite ease-in-out alternate;
+        }
+        .ball.left::after {
+            background: radial-gradient(circle at 30% 30%, #ff4d4d, #990000);
+        }
+        /* Bola Dorada Derecha */
+        .ball.right {
+            right: 20%;
+            height: 40px;
+            animation: swing 4s infinite ease-in-out alternate-reverse;
+        }
+        .ball.right::after {
+            background: radial-gradient(circle at 30% 30%, #ffd700, #b8860b);
+        }
+
+        @keyframes swing {
+            from { transform: rotate(5deg); transform-origin: top; }
+            to { transform: rotate(-5deg); transform-origin: top; }
+        }
+
+        /* --- 4. CONTENIDO Y MUÑECO --- */
         .stage-area {
             position: relative;
             width: 100%;
@@ -86,19 +172,17 @@
             align-items: center;
             flex: 1 1 auto;
             min-height: 0;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
         .holy-glow {
             position: absolute;
-            width: 60vw;
-            height: 60vw;
-            max-width: 250px;
-            max-height: 250px;
-            background: radial-gradient(circle, rgba(255, 215, 0, 0.15) 0%, transparent 70%);
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
             border-radius: 50%;
             z-index: 1;
-            animation: breathe 5s infinite alternate ease-in-out;
+            animation: pulseGlow 4s infinite;
         }
 
         .hero-image {
@@ -107,56 +191,60 @@
             width: auto;
             max-width: 100%;
             max-height: 35dvh; 
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.4));
+            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.5)); /* Sombra más fuerte para 3D */
             animation: floatHero 6s ease-in-out infinite;
             object-fit: contain;
         }
 
+        /* --- 5. TEXTOS Y BOTÓN --- */
         h1 {
             font-family: 'Playfair Display', serif;
             font-size: clamp(1.8rem, 5vw, 2.5rem);
-            background: linear-gradient(to bottom, #fff, #e0e0e0);
+            /* Oro Metálico */
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
             line-height: 1.2;
         }
 
         p.text-intro {
             font-size: clamp(0.9rem, 3vw, 1.1rem);
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255, 255, 255, 0.85);
             margin-bottom: 20px;
             font-weight: 300;
         }
 
         .blessing-text {
             font-size: clamp(0.85rem, 3vw, 1rem);
-            line-height: 1.5;
+            line-height: 1.6;
             color: #f0f0f0;
         }
 
         .highlight-gold {
             color: #ffd700;
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
+            font-weight: 600;
         }
 
         .btn-glass {
-            background: rgba(255, 255, 255, 0.15);
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05));
             border: 1px solid rgba(255, 255, 255, 0.4);
             color: white;
             padding: 12px 35px;
             border-radius: 50px;
             font-size: 0.95em;
             cursor: pointer;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(4px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             user-select: none;
             -webkit-tap-highlight-color: transparent;
+            transition: all 0.3s;
         }
-        .btn-glass:active {
-            transform: scale(0.95);
-            background: rgba(255, 255, 255, 0.3);
+        .btn-glass:hover {
+            background: white;
+            color: black;
+            box-shadow: 0 0 20px rgba(255,255,255,0.6);
         }
 
         #message-content {
@@ -172,25 +260,34 @@
             font-size: 0.75em;
             text-transform: uppercase;
             letter-spacing: 2px;
-            opacity: 0.7;
+            opacity: 0.6;
         }
 
         @keyframes floatHero {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-15px); }
         }
-        @keyframes breathe {
-            0% { transform: scale(1); opacity: 0.5; }
-            100% { transform: scale(1.1); opacity: 0.8; }
+        @keyframes pulseGlow {
+            0% { transform: scale(1); opacity: 0.4; }
+            100% { transform: scale(1.1); opacity: 0.7; }
         }
     </style>
 </head>
 <body>
 
-    <div class="particles"></div>
+    <div class="snow-container">
+        <div class="snow layer1"></div>
+        <div class="snow layer2"></div>
+        <div class="snow layer3"></div>
+    </div>
 
     <div class="glass-card">
         
+        <div class="ornaments">
+            <div class="ball left"></div>
+            <div class="ball right"></div>
+        </div>
+
         <div class="stage-area">
             <div class="holy-glow"></div>
             <img 
@@ -210,9 +307,9 @@
         <div id="message-content">
             <h1>Bendiciones</h1>
             <p class="blessing-text">
-                En estas fechas tan especiales, queremos desearte paz, amor y prosperidad.
+                Deseamos que la paz inunde tu corazón y el de los tuyos.
                 <br><br>
-                Que el nuevo año ilumine tu camino y traiga infinitas alegrías para ti y tu <span class="highlight-gold">familia</span>.
+                Que este nuevo año llegue cargado de luz, salud y hermosos momentos en <span class="highlight-gold">familia</span>.
             </p>
             <div class="signature">Con todo nuestro cariño</div>
         </div>
@@ -234,7 +331,7 @@
             hero.style.transition = "transform 0.8s ease";
             hero.style.transform = "translateY(-10px) scale(1.05)";
             
-            glow.style.background = "radial-gradient(circle, rgba(255, 223, 0, 0.3) 0%, transparent 70%)";
+            glow.style.background = "radial-gradient(circle, rgba(255, 215, 0, 0.25) 0%, transparent 70%)";
             glow.style.transform = "scale(1.2)";
         }
     </script>
