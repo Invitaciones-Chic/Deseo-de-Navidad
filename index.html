@@ -15,10 +15,10 @@
     <meta property="og:url" content="https://invitaciones-chic.github.io/Deseo-de-Navidad/">
     <meta property="og:type" content="website">
 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
     
     <style>
-        /* --- 1. FONDO NEGRO NEVADO Y PROFUNDO --- */
+        /* --- 1. FONDO NEGRO NEVADO 3D --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
@@ -27,15 +27,14 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            /* Degradado Negro a Azul Noche muy oscuro */
             background: radial-gradient(circle at 50% 100%, #1a1f35 0%, #000000 100%);
             font-family: 'Montserrat', sans-serif;
             overflow: hidden;
             color: white;
-            perspective: 1000px; /* Activa el 3D real */
+            perspective: 1000px;
         }
 
-        /* --- 2. NIEVE REALISTA 3D (PARALLAX) --- */
+        /* --- 2. NIEVE PARALLAX --- */
         .snow-container {
             position: absolute;
             width: 100%;
@@ -44,7 +43,6 @@
             z-index: 0;
             pointer-events: none;
         }
-
         .snow {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -55,115 +53,48 @@
             background-size: 200px 200px;
             animation: snowFall linear infinite;
         }
+        .snow.layer1 { opacity: 0.5; background-size: 400px 400px; animation-duration: 15s; filter: blur(1px); }
+        .snow.layer2 { opacity: 0.8; background-size: 300px 300px; animation-duration: 10s; }
+        .snow.layer3 { opacity: 1; background-image: radial-gradient(3px 3px at 100px 50px, #fff, rgba(0,0,0,0)), radial-gradient(4px 4px at 200px 150px, #fff, rgba(0,0,0,0)); background-size: 500px 500px; animation-duration: 6s; filter: blur(0.5px); }
 
-        /* Capa 1: Fondo (Lenta y pequeña) */
-        .snow.layer1 {
-            opacity: 0.5;
-            background-size: 400px 400px;
-            animation-duration: 15s;
-            filter: blur(1px);
-        }
-        /* Capa 2: Medio (Velocidad normal) */
-        .snow.layer2 {
-            opacity: 0.8;
-            background-size: 300px 300px;
-            animation-duration: 10s;
-        }
-        /* Capa 3: Frente (Rápida y grande - Efecto 3D fuerte) */
-        .snow.layer3 {
-            opacity: 1;
-            background-image: radial-gradient(3px 3px at 100px 50px, #fff, rgba(0,0,0,0)),
-                              radial-gradient(4px 4px at 200px 150px, #fff, rgba(0,0,0,0));
-            background-size: 500px 500px;
-            animation-duration: 6s;
-            filter: blur(0.5px); /* Desenfoque de movimiento sutil */
-        }
+        @keyframes snowFall { from { transform: translateY(-100%); } to { transform: translateY(100%); } }
 
-        @keyframes snowFall {
-            from { transform: translateY(-100%); }
-            to { transform: translateY(100%); }
-        }
-
-        /* --- 3. TARJETA DECORADA NAVIDEÑA --- */
+        /* --- 3. TARJETA CRISTAL --- */
         .glass-card {
             position: relative;
             z-index: 10;
             width: 90%;
             max-width: 380px;
-            max-height: 85dvh;
+            max-height: 92dvh; 
             
-            /* Efecto Cristal más intenso */
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 30px;
-            
-            /* Sombra realista 3D */
             box-shadow: 0 40px 70px rgba(0,0,0,0.8), inset 0 0 20px rgba(255,255,255,0.1);
             
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 25px 20px;
+            padding: 20px 20px 10px 20px; /* Padding ajustado para el footer */
             text-align: center;
-            
-            /* Decoración: Nieve acumulada arriba */
             border-top: 6px solid rgba(255,255,255,0.6);
         }
 
-        /* ADORNOS COLGANTES (Hechos con CSS) */
-        .ornaments {
-            position: absolute;
-            top: -10px;
-            width: 100%;
-            height: 100px;
-            pointer-events: none;
-            z-index: 20;
-        }
-        .ball {
-            position: absolute;
-            top: 0;
-            width: 2px; /* El hilo */
-            height: 40px;
-            background: rgba(255,255,255,0.5);
-        }
-        .ball::after { /* La esfera */
-            content: '';
-            position: absolute;
-            bottom: -25px;
-            left: -12px;
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.3);
-        }
-        /* Bola Roja Izquierda */
-        .ball.left {
-            left: 20%;
-            height: 60px; /* Más larga */
-            animation: swing 3s infinite ease-in-out alternate;
-        }
-        .ball.left::after {
-            background: radial-gradient(circle at 30% 30%, #ff4d4d, #990000);
-        }
-        /* Bola Dorada Derecha */
-        .ball.right {
-            right: 20%;
-            height: 40px;
-            animation: swing 4s infinite ease-in-out alternate-reverse;
-        }
-        .ball.right::after {
-            background: radial-gradient(circle at 30% 30%, #ffd700, #b8860b);
-        }
+        /* --- 4. ADORNOS --- */
+        .ornaments { position: absolute; top: -10px; width: 100%; height: 100px; pointer-events: none; z-index: 20; }
+        .ball { position: absolute; top: 0; width: 2px; height: 40px; background: rgba(255,255,255,0.5); }
+        .ball::after { content: ''; position: absolute; bottom: -25px; left: -12px; width: 26px; height: 26px; border-radius: 50%; box-shadow: 0 5px 10px rgba(0,0,0,0.3); }
+        .ball.left { left: 20%; height: 60px; animation: swing 3s infinite ease-in-out alternate; }
+        .ball.left::after { background: radial-gradient(circle at 30% 30%, #ff4d4d, #990000); }
+        .ball.right { right: 20%; height: 40px; animation: swing 4s infinite ease-in-out alternate-reverse; }
+        .ball.right::after { background: radial-gradient(circle at 30% 30%, #ffd700, #b8860b); }
 
-        @keyframes swing {
-            from { transform: rotate(5deg); transform-origin: top; }
-            to { transform: rotate(-5deg); transform-origin: top; }
-        }
+        @keyframes swing { from { transform: rotate(5deg); transform-origin: top; } to { transform: rotate(-5deg); transform-origin: top; } }
 
-        /* --- 4. CONTENIDO Y MUÑECO --- */
+        /* --- 5. IMAGEN Y TEXTOS --- */
         .stage-area {
             position: relative;
             width: 100%;
@@ -190,21 +121,19 @@
             z-index: 2;
             width: auto;
             max-width: 100%;
-            max-height: 35dvh; 
-            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.5)); /* Sombra más fuerte para 3D */
+            max-height: 30dvh;
+            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.5));
             animation: floatHero 6s ease-in-out infinite;
             object-fit: contain;
         }
 
-        /* --- 5. TEXTOS Y BOTÓN --- */
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
-            /* Oro Metálico */
+            font-size: clamp(1.8rem, 5vw, 2.4rem);
             background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             text-shadow: 0 2px 10px rgba(0,0,0,0.3);
             line-height: 1.2;
         }
@@ -217,15 +146,13 @@
         }
 
         .blessing-text {
-            font-size: clamp(0.85rem, 3vw, 1rem);
+            font-size: clamp(0.8rem, 3.5vw, 0.95rem);
             line-height: 1.6;
             color: #f0f0f0;
+            font-weight: 400;
         }
 
-        .highlight-gold {
-            color: #ffd700;
-            font-weight: 600;
-        }
+        .highlight-gold { color: #ffd700; font-weight: 600; font-family: 'Playfair Display', serif; font-style: italic;}
 
         .btn-glass {
             background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05));
@@ -241,20 +168,12 @@
             -webkit-tap-highlight-color: transparent;
             transition: all 0.3s;
         }
-        .btn-glass:hover {
-            background: white;
-            color: black;
-            box-shadow: 0 0 20px rgba(255,255,255,0.6);
-        }
+        .btn-glass:hover { background: white; color: black; box-shadow: 0 0 20px rgba(255,255,255,0.6); }
 
-        #message-content {
-            display: none;
-            opacity: 0;
-            transition: opacity 0.8s ease;
-        }
+        #message-content { display: none; opacity: 0; transition: opacity 0.8s ease; }
 
         .signature {
-            margin-top: 20px;
+            margin-top: 15px;
             border-top: 1px solid rgba(255,255,255,0.2);
             padding-top: 10px;
             font-size: 0.75em;
@@ -263,17 +182,37 @@
             opacity: 0.6;
         }
 
-        @keyframes floatHero {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+        /* --- 6. MARCA REGISTRADA CON BRILLO --- */
+        .brand-footer {
+            margin-top: 20px;
+            font-size: 0.55rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
+            
+            /* Efecto Shimmer Metálico */
+            background: linear-gradient(90deg, #777, #fff, #ffd700, #fff, #777);
+            background-size: 200% auto;
+            color: #aaa; /* Fallback */
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 3s linear infinite;
         }
-        @keyframes pulseGlow {
-            0% { transform: scale(1); opacity: 0.4; }
-            100% { transform: scale(1.1); opacity: 0.7; }
+
+        @keyframes shimmer {
+            to { background-position: 200% center; }
         }
+
+        @keyframes floatHero { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        @keyframes pulseGlow { 0% { transform: scale(1); opacity: 0.4; } 100% { transform: scale(1.1); opacity: 0.7; } }
     </style>
 </head>
 <body>
+
+    <audio id="christmas-music" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2025/12/17/audio_ed6692302b.mp3?filename=we-wish-you-a-merry-christmas-452819.mp3" type="audio/mpeg">
+    </audio>
 
     <div class="snow-container">
         <div class="snow layer1"></div>
@@ -305,13 +244,22 @@
         </div>
 
         <div id="message-content">
-            <h1>Bendiciones</h1>
+            <h1>Felices Fiestas</h1>
             <p class="blessing-text">
-                Deseamos que la paz inunde tu corazón y el de los tuyos.
+                Que la Navidad nos encuentre presentes,<br>
+                agradecidos por lo vivido y abiertos a lo que viene.
                 <br><br>
-                Que este nuevo año llegue cargado de luz, salud y hermosos momentos en <span class="highlight-gold">familia</span>.
+                Que nunca falte un abrazo sincero,<br>
+                una palabra que reconforte<br>
+                y la luz tranquila de saber que no estamos solos.
+                <br><br>
+                Para ti y los tuyos, los mejores deseos y <span class="highlight-gold">bendiciones</span>.
             </p>
             <div class="signature">Con todo nuestro cariño</div>
+        </div>
+
+        <div class="brand-footer">
+            Design by Magic Design Efecto &reg;
         </div>
 
     </div>
@@ -322,7 +270,13 @@
             const message = document.getElementById('message-content');
             const hero = document.getElementById('hero');
             const glow = document.querySelector('.holy-glow');
+            const music = document.getElementById('christmas-music');
 
+            // Reproducir música al tocar
+            music.volume = 0.5;
+            music.play().catch(e => console.log("Audio play blocked"));
+
+            // Animaciones
             intro.style.display = 'none';
             message.style.display = 'block';
             void message.offsetWidth; 
