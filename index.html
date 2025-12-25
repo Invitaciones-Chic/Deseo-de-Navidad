@@ -3,39 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    
     <title>Feliz Navidad - Magic Design</title>
-    <meta property="og:title" content="¡Feliz Navidad! - Magic Design">
-    <meta property="og:description" content="Tenemos un deseo especial y mágico para ti. Toca aquí para abrir tu tarjeta...">
-    <meta property="og:image" content="https://github.com/Invitaciones-Chic/Digital-Glam/blob/main/Mu%C3%B1eco%20de%20nieve%20magic%20Desing%20efecto.png?raw=true">
-    <meta property="og:image:secure_url" content="https://github.com/Invitaciones-Chic/Digital-Glam/blob/main/Mu%C3%B1eco%20de%20nieve%20magic%20Desing%20efecto.png?raw=true"> 
+
+    <meta property="og:image" content="https://raw.githubusercontent.com/Invitaciones-Chic/Digital-Glam/main/Mu%C3%B1eco%20de%20nieve%20magic%20Desing%20efecto.png">
+    <meta property="og:image:secure_url" content="https://raw.githubusercontent.com/Invitaciones-Chic/Digital-Glam/main/Mu%C3%B1eco%20de%20nieve%20magic%20Desing%20efecto.png">
+    
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="800">
     <meta property="og:image:height" content="800">
+    <meta property="og:image:alt" content="Muñeco de Nieve Magic Design">
+
+    <meta property="og:title" content="🎄 ¡Feliz Navidad! - Magic Design">
+    <meta property="og:description" content="✨ Tenemos un deseo mágico para ti. Toca aquí para abrir tu tarjeta...">
     <meta property="og:url" content="https://invitaciones-chic.github.io/Deseo-de-Navidad/">
     <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_ES">
+
+    <meta itemprop="name" content="Feliz Navidad - Magic Design">
+    <meta itemprop="description" content="✨ Tenemos un deseo mágico para ti. Toca aquí para abrir tu tarjeta...">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/Invitaciones-Chic/Digital-Glam/main/Mu%C3%B1eco%20de%20nieve%20magic%20Desing%20efecto.png">
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
     
     <style>
+        /* ... (MANTÉN TU CSS IGUAL QUE ANTES, NO CAMBIES NADA ABAJO DE AQUÍ) ... */
         /* --- 1. RESET Y BASE --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            /* dvh se adapta a las barras del navegador móvil */
             height: 100dvh; 
             width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            /* Fondo Azul Noche Profundo */
             background: radial-gradient(circle at 50% 30%, #0f2027 0%, #203a43 50%, #2c5364 100%);
             font-family: 'Montserrat', sans-serif;
             overflow: hidden;
             color: white;
         }
-
-        /* --- 2. FONDO ANIMADO --- */
+        /* ... resto del código css ... */
         .particles {
             position: absolute;
             width: 100%;
@@ -50,16 +56,13 @@
         }
         @keyframes floatSpace { from { background-position: 0 0; } to { background-position: 0 600px; } }
 
-        /* --- 3. TARJETA RESPONSIVE (MÓVIL) --- */
         .glass-card {
             position: relative;
             z-index: 10;
             width: 90%;
             max-width: 380px;
-            /* Altura dinámica segura para no chocar con barras de sistema */
             max-height: 85dvh; 
             height: auto;
-            
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
@@ -67,7 +70,6 @@
             border-top: 1px solid rgba(255, 255, 255, 0.4);
             border-radius: 30px;
             box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-            
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -76,14 +78,13 @@
             text-align: center;
         }
 
-        /* --- 4. IMAGEN RESPONSIVE --- */
         .stage-area {
             position: relative;
             width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            flex: 1 1 auto; /* Flexible */
+            flex: 1 1 auto;
             min-height: 0;
             margin-bottom: 20px;
         }
@@ -105,14 +106,12 @@
             z-index: 2;
             width: auto;
             max-width: 100%;
-            /* Limita la altura para que siempre quepa el botón */
             max-height: 35dvh; 
             filter: drop-shadow(0 10px 15px rgba(0,0,0,0.4));
             animation: floatHero 6s ease-in-out infinite;
             object-fit: contain;
         }
 
-        /* --- 5. TEXTOS --- */
         h1 {
             font-family: 'Playfair Display', serif;
             font-size: clamp(1.8rem, 5vw, 2.5rem);
@@ -142,7 +141,6 @@
             font-style: italic;
         }
 
-        /* --- 6. BOTÓN --- */
         .btn-glass {
             background: rgba(255, 255, 255, 0.15);
             border: 1px solid rgba(255, 255, 255, 0.4);
@@ -161,7 +159,6 @@
             background: rgba(255, 255, 255, 0.3);
         }
 
-        /* --- VISTAS --- */
         #message-content {
             display: none;
             opacity: 0;
@@ -197,7 +194,7 @@
         <div class="stage-area">
             <div class="holy-glow"></div>
             <img 
-                src="https://github.com/Invitaciones-Chic/Digital-Glam/blob/main/Mu%C3%B1eco%20de%20nieve%20magic%20Desing%20efecto.png?raw=true" 
+                src="https://raw.githubusercontent.com/Invitaciones-Chic/Digital-Glam/main/Mu%C3%B1eco%20de%20nieve%20magic%20Desing%20efecto.png" 
                 alt="Muñeco Mágico" 
                 class="hero-image"
                 id="hero"
